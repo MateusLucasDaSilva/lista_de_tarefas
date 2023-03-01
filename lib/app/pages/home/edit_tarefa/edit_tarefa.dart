@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lista_de_tarefas/app/core/ui/text_form_fild/text_form_fild_custon.dart';
+import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
 
 class EditTarefa extends StatefulWidget {

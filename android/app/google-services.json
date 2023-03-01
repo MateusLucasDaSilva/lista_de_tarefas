@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "860957552990",
+    "project_id": "lista-de-tarefas-26c52",
+    "storage_bucket": "lista-de-tarefas-26c52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860957552990:android:40c6e3baf13bd6bafd5fcf",
+        "android_client_info": {
+          "package_name": "br.edu.mateus.lista_de_tarefas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860957552990-kqi4r68v543dpiftp58l7cam7f9hn38n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.mateus.lista_de_tarefas",
+            "certificate_hash": "e8143807bf16b8df4fae781f73f482f04e91fcca"
+          }
+        },
+        {
+          "client_id": "860957552990-oa3d34dmcghl5uss4qlkbrf4jpott7lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS9ILwkYxUKWNm2altVDDRtHe6Bvl21H4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860957552990-oa3d34dmcghl5uss4qlkbrf4jpott7lq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

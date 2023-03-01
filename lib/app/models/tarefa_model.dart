@@ -33,4 +33,7 @@ class TarefaModel {
   factory TarefaModel.fromJson(String source) => TarefaModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
  
+
+  @override
+  String toString() => 'TarefaModel(name: $name, description: $description, situation: $situation)';
 }

@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:lista_de_tarefas/app/core/ui/text_form_fild/text_form_fild_custon.dart';
-
+import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
+import 'package:lista_de_tarefas/app/repositories/tarefa/implements/tarefa_reporitory_impl.dart';
+import 'package:provider/provider.dart';
 
 import '../../../models/tarefa_model.dart';
 
@@ -37,6 +38,7 @@ class _AddTarefasState extends State<AddTarefas> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<TarefaReporitoryImpl>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Adicionar tarefa'),
@@ -65,7 +67,7 @@ class _AddTarefasState extends State<AddTarefas> {
                     height: 40,
                     width: 100,
                     child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           var formValid =
                               formKey.currentState?.validate() ?? false;
                           var message = 'Formulário Inválido';
@@ -73,6 +75,18 @@ class _AddTarefasState extends State<AddTarefas> {
                             Navigator.of(context).pop();
                             message = 'Tarefa Salva';
                           }
+                          print(TarefaModel(
+                              name: nameEC.text,
+                              description: descripitonEC.text,
+                              situation: situationEC.text,
+                            ));
+                          await controller.save(
+                            TarefaModel(
+                              name: nameEC.text,
+                              description: descripitonEC.text,
+                              situation: situationEC.text,
+                            ),
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(message),
