@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
+import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class TarefaDetalhe extends StatelessWidget {
   final TarefaModel tarefa;
@@ -8,7 +10,9 @@ class TarefaDetalhe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<HomeController>(context);
     return Scaffold(
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -40,11 +44,16 @@ class TarefaDetalhe extends StatelessWidget {
                       Row(
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.of(context).pop();
+                            },
                             child: const Text('Não'),
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                               await controller.delete(tarefa);
+                               Navigator.of(context).popAndPushNamed('/home');
+                            },
                             child: const Text('Sim'),
                           ),
                         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/pages/home/add_tarefa/add_tarefas.dart';
 import 'package:lista_de_tarefas/app/pages/home/edit_tarefa/edit_tarefa.dart';
+import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
 import 'package:lista_de_tarefas/app/pages/splash/splash_page.dart';
 import 'package:lista_de_tarefas/app/repositories/tarefa/implements/tarefa_reporitory_impl.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,8 @@ class TodoListApp extends StatelessWidget {
       providers: [
         Provider(
           create: (context) => TarefaReporitoryImpl(),
-        )
+        ),
+        ChangeNotifierProvider<HomeController>(create: (context) => HomeController(),)
       ],
       child: MaterialApp(
         theme: ThemeData(primarySwatch: Colors.blue),

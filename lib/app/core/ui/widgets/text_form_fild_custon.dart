@@ -17,7 +17,7 @@ class TextFormFildCuston extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      initialValue: initialValue,
+      initialValue: null,
       maxLines: null,
       decoration: InputDecoration(
         label: Text(label),

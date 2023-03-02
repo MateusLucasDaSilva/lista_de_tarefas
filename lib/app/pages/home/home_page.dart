@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
+import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
 import 'package:lista_de_tarefas/app/pages/home/widget/tarefa_widget.dart';
-import 'package:lista_de_tarefas/app/repositories/tarefa/implements/tarefa_reporitory_impl.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,14 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<TarefaModel> _tarefas = [];
-  final _help = TarefaReporitoryImpl();
-
- 
+  final controller = HomeController();
 
   @override
   void initState() {
     super.initState();
-    _help.getAllTarefas().then(
+    controller.getAllTaks().then(
           (list) => setState(() {
             _tarefas = list;
           }),
@@ -28,6 +27,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final HomeController controller = Provider.of(context);
+    context.watch<HomeController>().getAllTaks().then((value) => setState(
+          () {
+            _tarefas = value;
+          },
+        ));
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -50,6 +56,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: _tarefas.length,
             itemBuilder: (context, index) => TarefaWidget(
                     tarefa: TarefaModel(
+                  id: _tarefas[index].id,
                   name: _tarefas[index].name,
                   description: _tarefas[index].description,
                   situation: _tarefas[index].situation,

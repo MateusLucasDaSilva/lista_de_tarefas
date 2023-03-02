@@ -4,11 +4,13 @@ abstract class TarefaReporitory {
 
 Future<List<TarefaModel>> getAllTarefas();
 
-Future<TarefaModel> getTarefa(String id);
 
 Future<void> save(TarefaModel tarefa);
 
 
+Future<void> update(TarefaModel tarefa);
+
+Future<void> delete(TarefaModel tarefa);
 
 
 

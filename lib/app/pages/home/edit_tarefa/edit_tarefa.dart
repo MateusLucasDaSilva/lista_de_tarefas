@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
+import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class EditTarefa extends StatefulWidget {
   const EditTarefa({
@@ -13,7 +15,10 @@ class EditTarefa extends StatefulWidget {
 }
 
 class _EditTarefaState extends State<EditTarefa> {
-  
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class _EditTarefaState extends State<EditTarefa> {
     final nameEC = TextEditingController(text: tarefa.name);
     final descripitonEC = TextEditingController(text: tarefa.description);
     final situationEC = TextEditingController(text: tarefa.situation);
-   
+    final controller = Provider.of<HomeController>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -63,11 +68,17 @@ class _EditTarefaState extends State<EditTarefa> {
                   height: 40,
                   width: 100,
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       var formValid = formKey.currentState?.validate() ?? false;
                       var message = 'Formulário Inválido';
                       if (formValid) {
-                        Navigator.of(context).pop();
+                        await controller.update(TarefaModel(
+                          id: tarefa.id,
+                          name: nameEC.text,
+                          description: descripitonEC.text,
+                          situation: situationEC.text,
+                        ));
+                        Navigator.of(context).popAndPushNamed('/home');
                         message = 'Tarefa Salva';
                       }
                       ScaffoldMessenger.of(context).showSnackBar(
