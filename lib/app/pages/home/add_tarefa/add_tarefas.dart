@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:lista_de_tarefas/app/core/ui/extensions/louder_extension.dart';
 import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
 import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,7 @@ class _AddTarefasState extends State<AddTarefas> {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<HomeController>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Adicionar tarefa'),
@@ -67,22 +69,25 @@ class _AddTarefasState extends State<AddTarefas> {
                     height: 40,
                     width: 100,
                     child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          widget.showLoader(context);
                           var formValid =
                               formKey.currentState?.validate() ?? false;
                           var message = 'Formulário Inválido';
                           if (formValid) {
-                            controller.save(
+                            await controller.save(
                               TarefaModel(
                                 name: nameEC.text,
                                 description: descripitonEC.text,
                                 situation: situationEC.text,
                               ),
                             );
-                            Navigator.of(context).pop();
+                            await Future.delayed(const Duration(seconds: 4));
+                            widget.hideLoader(context);
+
+                            Navigator.of(context).popAndPushNamed('/home');
                             message = 'Tarefa Salva';
                           }
-
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(message),

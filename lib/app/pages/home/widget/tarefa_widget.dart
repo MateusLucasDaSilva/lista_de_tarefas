@@ -24,7 +24,7 @@ class TarefaWidget extends StatelessWidget {
                           tarefa: tarefa,
                         )));
           },
-          leading: const Icon(Icons.account_tree_rounded),
+          leading: const CircleAvatar(backgroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/512/2721/2721299.png')),
           title: Text('# ${tarefa.name}'),
           subtitle: Text(tarefa.description),
           trailing: Text(tarefa.situation),

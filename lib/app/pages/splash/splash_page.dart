@@ -22,20 +22,19 @@ class SplashPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                 child: InkWell(
-                  onTap: ()=> Navigator.of(context).pushNamed('/home'),
+                  onTap: () => Navigator.of(context).pushNamed('/home'),
                   child: Container(
                     height: 60,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: const Color.fromARGB(255, 180, 86, 189),
                         borderRadius: BorderRadius.circular(15)),
                     child: const Center(
                         child: Text(
                       'Acessar Lista de tarefas',
                       style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white70
-                      ),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70),
                     )),
                   ),
                 ),

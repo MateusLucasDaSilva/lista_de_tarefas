@@ -81,7 +81,7 @@ class _EditTarefaState extends State<EditTarefa> {
                         Navigator.of(context).popAndPushNamed('/home');
                         message = 'Tarefa Salva';
                       }
-                      ScaffoldMessenger.of(context).showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(message),
                         ),
