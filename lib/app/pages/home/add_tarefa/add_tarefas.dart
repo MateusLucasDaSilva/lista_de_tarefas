@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/core/ui/extensions/louder_extension.dart';
 import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
@@ -19,7 +19,6 @@ class AddTarefas extends StatefulWidget {
 }
 
 class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
-
   final formKey = GlobalKey<FormState>();
   final nameEC = TextEditingController();
   final descripitonEC = TextEditingController();
@@ -78,7 +77,6 @@ class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
                                 situation: situationEC.text,
                               ),
                             );
-                            await Future.delayed(const Duration(seconds: 4));
                             hideLoader(context);
 
                             Navigator.of(context).popAndPushNamed('/home');

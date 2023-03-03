@@ -1,9 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
 import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
 import 'package:provider/provider.dart';
+
+import '../../../core/ui/extensions/louder_extension.dart';
 
 class EditTarefa extends StatefulWidget {
   const EditTarefa({
@@ -14,7 +16,7 @@ class EditTarefa extends StatefulWidget {
   State<EditTarefa> createState() => _EditTarefaState();
 }
 
-class _EditTarefaState extends State<EditTarefa> {
+class _EditTarefaState extends State<EditTarefa> with LoaderExtension {
   @override
   void dispose() {
     super.dispose();
@@ -69,6 +71,7 @@ class _EditTarefaState extends State<EditTarefa> {
                   width: 100,
                   child: ElevatedButton(
                     onPressed: () async {
+                      hideLoader(context);
                       var formValid = formKey.currentState?.validate() ?? false;
                       var message = 'Formulário Inválido';
                       if (formValid) {
@@ -78,10 +81,11 @@ class _EditTarefaState extends State<EditTarefa> {
                           description: descripitonEC.text,
                           situation: situationEC.text,
                         ));
+                        showLoader(context);
                         Navigator.of(context).popAndPushNamed('/home');
                         message = 'Tarefa Salva';
                       }
-                        ScaffoldMessenger.of(context).showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(message),
                         ),

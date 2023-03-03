@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:lista_de_tarefas/app/core/ui/extensions/louder_extension.dart';
 import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
 import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
 import 'package:provider/provider.dart';
 
-class TarefaDetalhe extends StatelessWidget {
+class TarefaDetalhe extends StatelessWidget with LoaderExtension{
   final TarefaModel tarefa;
 
   const TarefaDetalhe({super.key, required this.tarefa});
@@ -51,7 +54,9 @@ class TarefaDetalhe extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () async {
+                              showLoader(context);
                                await controller.delete(tarefa);
+                               hideLoader(context);
                                Navigator.of(context).popAndPushNamed('/home');
                             },
                             child: const Text('Sim'),
