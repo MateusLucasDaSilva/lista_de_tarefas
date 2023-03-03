@@ -18,16 +18,12 @@ class AddTarefas extends StatefulWidget {
   State<AddTarefas> createState() => _AddTarefasState();
 }
 
-class _AddTarefasState extends State<AddTarefas> {
+class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
+
   final formKey = GlobalKey<FormState>();
   final nameEC = TextEditingController();
   final descripitonEC = TextEditingController();
   final situationEC = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -70,7 +66,7 @@ class _AddTarefasState extends State<AddTarefas> {
                     width: 100,
                     child: ElevatedButton(
                         onPressed: () async {
-                          widget.showLoader(context);
+                          showLoader(context);
                           var formValid =
                               formKey.currentState?.validate() ?? false;
                           var message = 'Formulário Inválido';
@@ -83,7 +79,7 @@ class _AddTarefasState extends State<AddTarefas> {
                               ),
                             );
                             await Future.delayed(const Duration(seconds: 4));
-                            widget.hideLoader(context);
+                            hideLoader(context);
 
                             Navigator.of(context).popAndPushNamed('/home');
                             message = 'Tarefa Salva';

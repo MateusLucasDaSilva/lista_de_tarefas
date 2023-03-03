@@ -27,8 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Provider.of(context);
-    context.watch<HomeController>().getAllTaks().then((value) => setState(
+    context.read<HomeController>().getAllTaks().then((value) => setState(
           () {
             _tarefas = value;
           },
