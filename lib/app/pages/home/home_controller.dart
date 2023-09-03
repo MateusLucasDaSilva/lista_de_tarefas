@@ -1,19 +1,19 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
-import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
 import 'package:lista_de_tarefas/app/repositories/tarefa/implements/tarefa_reporitory_impl.dart';
+import 'package:lista_de_tarefas/app/src/domain/entities/task/task_entity.dart';
 
 class HomeController extends ChangeNotifier {
   final _repository = TarefaReporitoryImpl();
-  List<TarefaModel> _tarefas = [];
+  List<TaskEntity> _tarefas = [];
 
-  Future<List<TarefaModel>> getAllTaks() async {
+  Future<List<TaskEntity>> getAllTaks() async {
     _tarefas = await _repository.getAllTarefas();
     return _tarefas;
   }
 
-  Future<void> save(TarefaModel tarefa) async {
+  Future<void> save(TaskEntity tarefa) async {
     try {
       await _repository.save(tarefa);
       notifyListeners();
@@ -25,7 +25,7 @@ class HomeController extends ChangeNotifier {
     }
   }
 
-  Future<void> update(TarefaModel tarefa) async {
+  Future<void> update(TaskEntity tarefa) async {
     try {
       await _repository.update(tarefa);
       notifyListeners();
@@ -37,7 +37,7 @@ class HomeController extends ChangeNotifier {
     }
   }
 
-  Future<void> delete(TarefaModel tarefa) async {
+  Future<void> delete(TaskEntity tarefa) async {
     try {
       _repository.delete(tarefa);
       notifyListeners();

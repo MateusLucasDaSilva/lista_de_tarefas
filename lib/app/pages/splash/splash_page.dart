@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_tarefas/app/src/domain/entities/routes/routes.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -22,20 +23,22 @@ class SplashPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                 child: InkWell(
-                  onTap: () => Navigator.of(context).pushNamed('/home'),
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(NamedRoutes.home.route),
                   child: Container(
                     height: 60,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 180, 86, 189),
                         borderRadius: BorderRadius.circular(15)),
                     child: const Center(
-                        child: Text(
-                      'Acessar Lista de tarefas',
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white70),
-                    )),
+                      child: Text(
+                        'Acessar Lista de tarefas',
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70),
+                      ),
+                    ),
                   ),
                 ),
               )

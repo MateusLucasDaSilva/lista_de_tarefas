@@ -1,14 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:lista_de_tarefas/app/core/ui/extensions/louder_extension.dart';
-import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
 import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
+import 'package:lista_de_tarefas/app/src/domain/entities/task/task_entity.dart';
+import 'package:lista_de_tarefas/app/src/presentation/shared/custom_text_form_fild/text_form_fild_custon.dart';
+import 'package:lista_de_tarefas/app/src/presentation/shared/loader/louder_extension.dart';
 import 'package:provider/provider.dart';
 
-import '../../../models/tarefa_model.dart';
-
 class AddTarefas extends StatefulWidget {
-  final TarefaModel? tarefa;
+  final TaskEntity? tarefa;
   const AddTarefas({
     Key? key,
     this.tarefa,
@@ -71,7 +70,7 @@ class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
                           var message = 'Formulário Inválido';
                           if (formValid) {
                             await controller.save(
-                              TarefaModel(
+                              TaskEntity(
                                 name: nameEC.text,
                                 description: descripitonEC.text,
                                 situation: situationEC.text,

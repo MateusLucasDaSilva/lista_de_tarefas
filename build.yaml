@@ -1,0 +1,35 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        enabled: true
+        generate_for:
+          include:
+            - lib/app/src/data/models/**model.dart
+
+      injectable_generator|injectable_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/app/src/data/clients/**.dart
+            - lib/app/src/data/data_sources/**_datasource.dart
+            - lib/app/src/data/data_sources/**_datasource_impl.dart
+            - lib/app/src/data/repositories/**_repository_impl.dart
+            - lib/app/src/domain/repositories/**_repository.dart
+            - lib/app/src/domain/use_cases/**.dart
+            - lib/app/src/presentation/**_controller.dart
+            
+
+      injectable_generator|injectable_config_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/app/src/di/injectable.dart
+
+      mobx_codegen|mobx_generator:
+        options:
+          hasToString: false
+        generate_for:
+          include:
+            - lib/app/src/presentation/**_controller.dart
+

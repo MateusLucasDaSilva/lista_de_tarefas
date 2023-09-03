@@ -1,9 +1,6 @@
+enum AppEndpoints {
+  tarefa('tasks');
 
-// enum AppEndpoints {
-//   dodsds('taredas/tasks'),
- 
-
-//   const AppEndpoints(this.path);
-//   final String path;
-  
-// }
+  const AppEndpoints(this.endpoint);
+  final String endpoint;
+}

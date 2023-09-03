@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
 import 'package:flutter/material.dart';
-import 'package:lista_de_tarefas/app/core/ui/widgets/text_form_fild_custon.dart';
-import 'package:lista_de_tarefas/app/models/tarefa_model.dart';
 import 'package:lista_de_tarefas/app/pages/home/home_controller.dart';
+import 'package:lista_de_tarefas/app/src/domain/entities/task/task_entity.dart';
+import 'package:lista_de_tarefas/app/src/presentation/shared/custom_text_form_fild/text_form_fild_custon.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/ui/extensions/louder_extension.dart';
+import '../../../src/presentation/shared/loader/louder_extension.dart';
 
 class EditTarefa extends StatefulWidget {
   const EditTarefa({
@@ -24,7 +24,7 @@ class _EditTarefaState extends State<EditTarefa> with LoaderExtension {
 
   @override
   Widget build(BuildContext context) {
-    var tarefa = ModalRoute.of(context)!.settings.arguments as TarefaModel;
+    var tarefa = ModalRoute.of(context)!.settings.arguments as TaskEntity;
     final formKey = GlobalKey<FormState>();
     final nameEC = TextEditingController(text: tarefa.name);
     final descripitonEC = TextEditingController(text: tarefa.description);
@@ -75,7 +75,7 @@ class _EditTarefaState extends State<EditTarefa> with LoaderExtension {
                       var formValid = formKey.currentState?.validate() ?? false;
                       var message = 'Formulário Inválido';
                       if (formValid) {
-                        await controller.update(TarefaModel(
+                        await controller.update(TaskEntity(
                           id: tarefa.id,
                           name: nameEC.text,
                           description: descripitonEC.text,
