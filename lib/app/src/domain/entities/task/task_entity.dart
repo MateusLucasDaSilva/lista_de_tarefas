@@ -24,4 +24,22 @@ class TaskEntity {
       situation: situation ?? this.situation,
     );
   }
+
+  @override
+  bool operator ==(covariant TaskEntity other) {
+    if (identical(this, other)) return true;
+
+    return other.id == id &&
+        other.name == name &&
+        other.description == description &&
+        other.situation == situation;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        description.hashCode ^
+        situation.hashCode;
+  }
 }

@@ -18,9 +18,9 @@ import '../data/repositories/task_repository_impl.dart' as _i6;
 import '../domain/repositories/task/task_repository.dart' as _i5;
 import '../domain/use_cases/task/delete_task_usecase.dart' as _i8;
 import '../domain/use_cases/task/get_tasks_usecase.dart' as _i9;
-import '../domain/use_cases/task/post_task_usecase.dart' as _i11;
+import '../domain/use_cases/task/post_task_usecase.dart' as _i10;
 import '../domain/use_cases/task/update_task_usecase.dart' as _i7;
-import '../presentation/screens/home/controller/home_controller.dart' as _i10;
+import '../presentation/screens/home/controller/home_controller.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,10 +42,14 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.DeleteTaskUsecase(repository: gh<_i5.TaskRepository>()));
     gh.factory<_i9.GetTasksUsecase>(
         () => _i9.GetTasksUsecase(repository: gh<_i5.TaskRepository>()));
-    gh.factory<_i10.HomeController>(
-        () => _i10.HomeController(getTasksUsecase: gh<_i9.GetTasksUsecase>()));
-    gh.factory<_i11.PostTaskUsecase>(
-        () => _i11.PostTaskUsecase(repository: gh<_i5.TaskRepository>()));
+    gh.factory<_i10.PostTaskUsecase>(
+        () => _i10.PostTaskUsecase(repository: gh<_i5.TaskRepository>()));
+    gh.factory<_i11.HomeController>(() => _i11.HomeController(
+          getTasksUsecase: gh<_i9.GetTasksUsecase>(),
+          deleteTaskUsecase: gh<_i8.DeleteTaskUsecase>(),
+          updateTaskUsecase: gh<_i7.UpdateTaskUsecase>(),
+          postTaskUsecase: gh<_i10.PostTaskUsecase>(),
+        ));
     return this;
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:lista_de_tarefas/app/src/data/data_sources/task/task_datasource.dart';
 import 'package:lista_de_tarefas/app/src/domain/entities/either_of/either_of.dart';
@@ -18,7 +20,8 @@ class TaskRepositoryImpl implements TaskRepository {
     try {
       final VoidSuccess result = await _datasource.deleteTask(task: task);
       return resolve(result);
-    } on Exception {
+    } catch (e) {
+      log(e.toString());
       return reject(DeleteTaskFailure(message: 'Erro ao Deletar task'));
     }
   }
@@ -28,7 +31,8 @@ class TaskRepositoryImpl implements TaskRepository {
     try {
       final List<TaskEntity> result = await _datasource.getTasks();
       return resolve(result);
-    } on Exception {
+    } catch (e) {
+      log(e.toString());
       return reject(GetTasksFailure(message: 'Erro ao buscar tasks'));
     }
   }
@@ -39,7 +43,8 @@ class TaskRepositoryImpl implements TaskRepository {
     try {
       final TaskEntity result = await _datasource.postTask(task: task);
       return resolve(result);
-    } on Exception {
+    } catch (e) {
+      log(e.toString());
       return reject(PostTaskFailure(message: 'Erro ao inserir task'));
     }
   }
@@ -50,7 +55,8 @@ class TaskRepositoryImpl implements TaskRepository {
     try {
       final VoidSuccess result = await _datasource.updateTask(task: task);
       return resolve(result);
-    } on Exception {
+    } catch (e) {
+      log(e.toString());
       return reject(UpdateTaskFailure(message: 'Erro ao atualizar task'));
     }
   }

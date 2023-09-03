@@ -59,7 +59,10 @@ class TaskDatasourceImpl implements TaskDatasource {
   Future<VoidSuccess> updateTask({required TaskEntity task}) async {
     try {
       final FirebaseFirestore db = DBFirestore.get();
-      await db.doc(task.id!).update(TaskModal.fromEntity(task).toJson());
+      await db
+          .collection(AppEndpoints.tarefa.endpoint)
+          .doc(task.id!)
+          .update(TaskModal.fromEntity(task).toJson());
       return const VoidSuccess();
     } catch (e) {
       rethrow;

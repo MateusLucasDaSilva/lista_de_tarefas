@@ -38,4 +38,37 @@ mixin _$HomeController on HomeControllerBase, Store {
       _$HomeControllerBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  void _updateTaskFromList(TaskEntity task) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase._updateTaskFromList');
+    try {
+      return super._updateTaskFromList(task);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeTaskFromList(TaskEntity task) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.removeTaskFromList');
+    try {
+      return super.removeTaskFromList(task);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setNewTaskFromList(TaskEntity newTask) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.setNewTaskFromList');
+    try {
+      return super.setNewTaskFromList(newTask);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 }
