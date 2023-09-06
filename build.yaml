@@ -5,31 +5,32 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/app/src/data/models/**model.dart
+            - lib/data/models/**model.dart
 
       injectable_generator|injectable_builder:
         enabled: true
         generate_for:
           include:
-            - lib/app/src/data/clients/**.dart
-            - lib/app/src/data/data_sources/**_datasource.dart
-            - lib/app/src/data/data_sources/**_datasource_impl.dart
-            - lib/app/src/data/repositories/**_repository_impl.dart
-            - lib/app/src/domain/repositories/**_repository.dart
-            - lib/app/src/domain/use_cases/**.dart
-            - lib/app/src/presentation/**_controller.dart
+            - lib/data/clients/**.dart
+            - lib/data/data_sources/**_datasource.dart
+            - lib/data/data_sources/**_datasource_impl.dart
+            - lib/data/repositories/**_repository_impl.dart
+            - lib/domain/repositories/**_repository.dart
+            - lib/domain/use_cases/**.dart
+            - lib/presentation/**_controller.dart
+            - lib/core/services/**_service.dart
             
 
       injectable_generator|injectable_config_builder:
         enabled: true
         generate_for:
           include:
-            - lib/app/src/di/injectable.dart
+            - lib/di/injectable.dart
 
       mobx_codegen|mobx_generator:
         options:
           hasToString: false
         generate_for:
           include:
-            - lib/app/src/presentation/**_controller.dart
+            - lib/presentation/**_controller.dart
 
