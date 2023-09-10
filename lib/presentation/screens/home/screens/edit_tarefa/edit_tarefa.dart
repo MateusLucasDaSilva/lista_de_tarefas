@@ -63,6 +63,7 @@ class _EditTarefaState extends State<EditTarefa> with LoaderExtension {
       name: nameEC.text,
       description: descriptionEC.text,
       situation: situationEC.text,
+      dateTime: DateTime.now().add(const Duration(minutes: 5)),
     );
 
     editeTaskCallback?.call(task);

@@ -11,6 +11,8 @@ class TaskModal extends TaskEntity {
     required super.name,
     required super.description,
     required super.situation,
+    required super.dateTime,
+    super.createdAt,
     super.id,
   });
 

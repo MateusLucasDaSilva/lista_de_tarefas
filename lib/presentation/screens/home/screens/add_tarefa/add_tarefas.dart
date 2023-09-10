@@ -26,8 +26,6 @@ class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
   @override
   void initState() {
     super.initState();
-    addTaskCallBack =
-        ModalRoute.of(context)!.settings.arguments as Function(TaskEntity)?;
   }
 
   void submitTask() {
@@ -40,6 +38,8 @@ class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
       name: nameEC.text,
       description: descriptionEC.text,
       situation: situationEC.text,
+      createdAt: DateTime.now(),
+      dateTime: DateTime.now().add(const Duration(minutes: 5)),
     );
 
     addTaskCallBack?.call(task);
@@ -57,6 +57,8 @@ class _AddTarefasState extends State<AddTarefas> with LoaderExtension {
 
   @override
   Widget build(BuildContext context) {
+    addTaskCallBack =
+        ModalRoute.of(context)!.settings.arguments as Function(TaskEntity)?;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Adicionar tarefa'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_tarefas/domain/constants/app_images.dart';
 import 'package:lista_de_tarefas/domain/entities/routes/routes.dart';
 
 class SplashPage extends StatelessWidget {
@@ -8,11 +9,9 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(
-                  'https://cdn-icons-png.flaticon.com/512/2721/2721299.png'),
-              fit: BoxFit.fitWidth),
+              image: AssetImage(AppImages.imageTask), fit: BoxFit.fitWidth),
         ),
         child: Center(
           child: Column(

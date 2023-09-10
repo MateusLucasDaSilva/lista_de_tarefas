@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lista_de_tarefas/core/services/local_notification/local_notification_service.dart';
 import 'package:lista_de_tarefas/di/injectable.dart';
+import 'package:lista_de_tarefas/domain/constants/app_images.dart';
 import 'package:lista_de_tarefas/domain/entities/notification/notification_entity.dart';
 import 'package:lista_de_tarefas/domain/entities/routes/routes.dart';
 import 'package:lista_de_tarefas/domain/entities/task/task_entity.dart';
@@ -68,18 +69,28 @@ class _HomePageState extends State<HomePage> {
               ),
         ),
       ),
-      body: Observer(
-        builder: (context) => Center(
-          child: ListView.builder(
-            itemCount: controller.tasks.length,
-            itemBuilder: (context, index) {
-              final TaskEntity task = controller.tasks[index];
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(
+              AppImages.paisagem,
+            ),
+          ),
+        ),
+        child: Observer(
+          builder: (context) => Center(
+            child: ListView.builder(
+              itemCount: controller.tasks.length,
+              itemBuilder: (context, index) {
+                final TaskEntity task = controller.tasks[index];
 
-              return TarefaWidget(
-                tarefa: task,
-                goToEditTask: goToEditTask,
-              );
-            },
+                return TarefaWidget(
+                  tarefa: task,
+                  goToEditTask: goToEditTask,
+                );
+              },
+            ),
           ),
         ),
       ),
